@@ -24,7 +24,7 @@ API_KEY = os.getenv("DG_API_KEY")
 
 
 
-def main():
+def summary():
     try:
         # STEP 1 Create a Deepgram client using the API key
         deepgram = DeepgramClient(API_KEY)
@@ -52,13 +52,13 @@ def main():
         # STEP 4: Print the response
         student_details = json.loads(response.to_json(indent=4))
         keysList = list(student_details["results"].keys())
-        # print(response.to_json(indent=4))
-        print(student_details["results"]["summary"]["short"])
-        # print(keysList)
+
+        print("summary:\n" + student_details["results"]["summary"]["short"])
+
 
     except Exception as e:
         print(f"Exception: {e}")
 
 
 if __name__ == "__main__":
-    main()
+    summary()
